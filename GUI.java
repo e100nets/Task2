@@ -1,6 +1,8 @@
-import ilya.ignatov.LinkList;
+package ilya.ignatov;
+
 import ru.vsu.cs.util.JTableUtils;
 import ru.vsu.cs.util.SwingUtils;
+import ru.vsu.cs.util.ArrayUtils;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -53,7 +55,7 @@ public class GUI extends JFrame {
                 try {
                     linkList.clear();
                     if (fileChooser.showOpenDialog(jPanel) == JFileChooser.APPROVE_OPTION) {
-                        int[] array = ru.vsu.cs.util.ArrayUtils.readIntArrayFromFile(fileChooser.getSelectedFile().getPath());
+                        int[] array = ArrayUtils.readIntArrayFromFile(fileChooser.getSelectedFile().getPath());
                         JTableUtils.writeArrayToJTable(jTable, array);
                         linkList.listFromArray(JTableUtils.readIntArrayFromJTable(jTable));
                     }
@@ -83,15 +85,11 @@ public class GUI extends JFrame {
         container.add(randomList);
         container.add(loadList);
         container.add(findMax);
-
-
     }
 
     public static void main (String [] args) {
         GUI app = new GUI();
         app.setBounds(100, 100, 1000, 200);
         app.setVisible(true);
-
-
     }
 }
