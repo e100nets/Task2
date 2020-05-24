@@ -24,7 +24,6 @@ public class GUI extends JFrame {
     private TextField size = new TextField("0");
     private TextField max = new TextField();
     private TextField count = new TextField();
-    private JScrollPane scrollPane = new JScrollPane(jTable);
     private JFileChooser fileChooser = new JFileChooser();
 
 
