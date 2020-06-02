@@ -79,6 +79,7 @@ public class LinkList {
             return max;
         }
     }
+
     public  int findCount () {
         int count = 0;
         Node current = head;
@@ -94,6 +95,7 @@ public class LinkList {
             return count;
         }
     }
+
     public int[] toArray () {
         Node current = head;
         int[] array = new int[size];
