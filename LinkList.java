@@ -22,6 +22,18 @@ public class LinkList {
         size = 0;
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
     public void addElement (int value){
         if (size == 0){
             head = tail = new Node(value, null);
@@ -33,18 +45,23 @@ public class LinkList {
         size++;
     }
 
-    public int [] randomList(int k) {
-        Random random = new Random ();
-        int [] array = new int [k];
-        for (int i = 0; i < k; i++) {
-            array[i] = random.nextInt(20)+1;
+    public void deleteElement () {
+        Node current = head;
+        if (size == 0) {
+            return;
         }
-        return array;
-    }
-
-    public void listFromArray (int [] array) {
-        for (int i = 0; i<array.length; i++){
-            addElement(array [i]);
+        if (size == 1) {
+            clear();
+        }
+        else {
+            while (current.next != null) {
+                if(current.next == tail) {
+                    tail = current;
+                    break;
+                }
+                current = current.next;
+            }
+            size--;
         }
     }
 
@@ -65,15 +82,25 @@ public class LinkList {
     public  int findCount () {
         int count = 0;
         Node current = head;
+        int maxElement = findMax();
         if (size == 1)
             return 1;
         else {
             for (int i = 0; i < size; i++) {
-                if (current.value == findMax())
+                if (current.value == maxElement)
                     count++;
                 current = current.next;
             }
             return count;
         }
+    }
+    public int[] toArray () {
+        Node current = head;
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            array[i] = current.value;
+            current = current.next;
+        }
+        return array;
     }
 }
